@@ -21,7 +21,10 @@ Automatically add/update ingress rule in AWS security group
 Clone the repo 
 `git clone https://github.com/arddluma/aws-auto-sg.git`
 
-You have to have properly install awscli with valid credentials!
+You have to have installed awscli with valid credentials!
+**Make sure you have properly set default region using aws configure command or export as variable like this:**
+e.g `export AWS_DEFAULT_PROFILE=eu-central-1`
+
 Edit `magic.sh` as following:
 - line 3 `SG_ID` add correct security group rule ID `sg-xxxxxxxxxxxxxx`.
 - line 4 `SG_DESCRIPTION` add proper security group rule description. e.g `Office Access port 22`

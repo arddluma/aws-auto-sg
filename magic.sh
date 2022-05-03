@@ -43,8 +43,8 @@ main () {
     fi
 
     if [[ $GET_IP != "" ]] && [[ $OLD_CIDR != $GET_IP_CIDR ]]; then
-        aws ec2 authorize-security-group-ingress --group-id $SG_ID --ip-permissions IpProtocol=tcp,FromPort=$PORT,ToPort=$PORT,IpRanges="[{CidrIp=$GET_IP_CIDR,Description='$SG_DESCRIPTION'}"] --profile $AWS_PROFILE > /dev/null 2>&1
-        printf "\nSG rule is applied successfully! \n"
+        aws ec2 authorize-security-group-ingress --group-id $SG_ID --ip-permissions IpProtocol=tcp,FromPort=$PORT,ToPort=$PORT,IpRanges="[{CidrIp=$GET_IP_CIDR,Description='$SG_DESCRIPTION'}"] --profile $AWS_PROFILE > /dev/null 2>&1 \
+        && printf "\nSG rule is applied successfully! \n" || printf "\nFailed to apply rule!"
     fi
 
     if [[ $GET_IP_CIDR == $OLD_CIDR ]]; then
